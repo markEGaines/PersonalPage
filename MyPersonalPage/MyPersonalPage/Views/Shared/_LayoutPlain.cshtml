@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title Mark Gaines | Professional Portfolio</title>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/font-awesome.css">
+    <link rel="stylesheet" href="~/Content/flexslider.css">
+    <link rel="stylesheet" href="~/Content/designr-theme-cyan.css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,700,700italic,900" rel="stylesheet" type="text/css">
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body  data-spy="scroll" data-target="#main-nav" data-offset="200">
+
+    <!-- ==============================================
+    MAIN NAV
+    =============================================== -->
+    <div id="main-nav" class="navbar navbar-fixed-top scrolled">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#site-nav">
+                    <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                </button>
+
+                <!-- ======= LOGO ========-->
+                <a class="navbar-brand scrollto" href="/#home">MARK GAINES<br><span>Developer</span></a>
+                @*@Html.ActionLink("MARK GAINES", "Index", "Home", null, null, "home", null, new { @class = "navbar-brand scrollto" });*@
+                <!-- <a class="navbar-brand scrollto ir-logo" href="#">JOHN DOE<br><span>UI Designer</span></a> -->
+
+            </div>
+
+            <div id="site-nav" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="sr-only">
+                        @Html.ActionLink("Home", "Index", "Home", null, null, "home", null, new { @class = "scrollto" })
+                    </li>
+                    <li>
+                        @Html.ActionLink("What I Do", "Index", "Home", null, null, "services", null, new { @class = "scrollto" })
+                    </li>
+                    <li>
+                        @Html.ActionLink("About Me", "Index", "Home", null, null, "about", null, new { @class = "scrollto" })
+                    </li>
+                    @*<li>
+                        @Html.ActionLink("My Works", "Index", "Home", null, null, "portfolio", null, new { @class = "scrollto" })
+                    </li>*@
+                    <li>
+                        @Html.ActionLink("Contact Me", "Index", "Home", null, null, "contact", null, new { @class = "scrollto" })
+                    </li>
+                    <li> 
+                        @Html.ActionLink("JavaDemo", "JavaDemo", "Home")
+                    </li>
+                </ul>
+            </div><!--End navbar-collapse -->
+        </div><!--End container -->
+    </div><!--End main-nav -->
+
+    
+        @RenderBody()
+    
+
+ 
+    <!-- ==============================================
+    FOOTER
+    =============================================== -->
+        <footer id="main-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 left-col">
+                        <h1 class="small-logo">MARK GAINES<br><span>Developer</span></h1>
+                        <ul class="footer-nav">
+                            <li><a class="scrollto" href="/#home">Home</a></li>
+                            <li><a class="scrollto" href="/#services">Services</a></li>
+                            @*<li><a class="scrollto" href="/#portfolio">Portfolio</a></li>*@
+                            <li><a class="scrollto" href="/#contact">Contact</a></li>
+                        </ul>
+                        <p>&copy;Copyright 2015 / All Rights Reserved</p>
+                    </div>
+                    <div class="col-sm-6 right-col">
+                        <h2>Who Am I?</h2>
+                        <p>I am an enthusiast who enjoys online digital and offline world. I make high quality graphics and clean html5 and css3 codes.</p>
+                    </div>
+                </div><!-- End row -->
+            </div><!-- End container -->
+        </footer><!-- End footer -->
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+
+    <script src='~/js/jquery.scrollto.js'></script>
+    <script src='~/js/jquery.flexslider.min.js'></script>
+    <script src='~/js/twitterFetcher_v10_min.js'></script>
+    <script src='~/js/jquery.masonry.min.js'></script>
+    <script src="~/js/waypoints.min.js"></script>
+    <script src="~/js/jquery.easypiechart.js"></script>
+    <script src="~/js/jquery.backstretch.min.js"></script>
+    <script src="~/js/contact.js"></script>
+    <script src="~/js/designr.js"></script>
+    <script src="~/js/JavaDemo.js"></script>
+</body>
+</html>
