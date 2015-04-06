@@ -15,7 +15,7 @@ namespace MyPersonalPage.Controllers
 
   
 
-        public ActionResult JavaDemo()
+        public ActionResult JavaScriptDemo()
         {
             return View();
         }

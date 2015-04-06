@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="~/Content/font-awesome.css">
     <link rel="stylesheet" href="~/Content/flexslider.css">
     <link rel="stylesheet" href="~/Content/designr-theme-cyan.css">
-    <link href="http://alexgorbatchev.com/pub/sh/current/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />
     <link href="http://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,700,700italic,900" rel="stylesheet" type="text/css">
     @Scripts.Render("~/bundles/modernizr")
 
@@ -53,7 +52,7 @@
                         @Html.ActionLink("Contact Me", "Index", "Home", null, null, "contact", null, new { @class = "scrollto" })
                     </li>
                     <li> 
-                        @Html.ActionLink("JavaDemo", "JavaDemo", "Home")
+                        @Html.ActionLink("Java Script Demo", "JavaScriptDemo", "Home")
                     </li>
                 </ul>
             </div><!--End navbar-collapse -->
@@ -103,11 +102,13 @@
     <script src="~/js/jquery.backstretch.min.js"></script>
     <script src="~/js/contact.js"></script>
     <script src="~/js/designr.js"></script>
-    <script src="~/js/libs/shCore.js"></script>
+
+    @*<script src="~/js/libs/shCore.js"></script>
     <script src="~/js/libs/shAutoloader.js"></script>
-    <script type="text/javascript" src="~/js/shBrushJScript.js"></script>
+    <script type="text/javascript" src="~/js/libs/shBrushJScript.js"></script>
     <script type="text/javascript">
-    SyntaxHighlighter.all()
-    </script>
+        SyntaxHighlighter.all()
+    </script>*@
+
 </body>
 </html>
