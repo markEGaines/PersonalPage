@@ -179,7 +179,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CodeFirst\Comment.cs" />
+    <Compile Include="Models\CodeFirst\Post.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -240,6 +243,7 @@
     <Content Include="js\libs\modernizr.min.js" />
     <Content Include="js\libs\shAutoloader.js" />
     <Content Include="js\libs\shCore.js" />
+    <Content Include="js\libs\shLegacy.js" />
     <Content Include="js\respond.min.js" />
     <Content Include="js\respond.src.js" />
     <Content Include="js\libs\shBrushJScript.js" />

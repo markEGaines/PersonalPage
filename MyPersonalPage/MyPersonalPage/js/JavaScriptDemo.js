@@ -19,10 +19,13 @@
                         "Are we not drawn onward, we few? Drawn onward to a new era?",
                         "Able was I, ere I saw Elba.",
                         "Madam, I'm Adam."];
-    
+     var q = 0;
      task4a = function () {
-         var x = Math.floor(Math.random() * palindromes.length);
-         var x = palindromes[Math.floor((Math.random() * palindromes.length))];
+      if (q < palindromes.length ) { q++ } else { q = 0 };
+
+
+         //var x = palindromes[Math.floor((Math.random() * palindromes.length))];
+         var x = palindromes[q];
          $("#t4a1").val(x);
      };
 
