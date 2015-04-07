@@ -225,7 +225,7 @@
     <Content Include="Icon.png" />
     <Content Include="js\contact.js" />
     <Content Include="js\designr.js" />
-    <Content Include="js\JavaDemo.js" />
+    <Content Include="js\JavaScriptDemo.js" />
     <Content Include="js\jquery.backstretch.js" />
     <Content Include="js\jquery.backstretch.min.js" />
     <Content Include="js\jquery.easypiechart.js" />

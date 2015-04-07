@@ -1,11 +1,11 @@
 ﻿$(document).ready(function() {
 
     // Pre-load Task 1
-    $("#p1").val(1);
-    $("#p2").val(2);
-    $("#p3").val(3);
-    $("#p4").val(4);
-    $("#p5").val(5);
+    //$("#p1").val(Math.floor((Math.random() * 9999) + 1));
+    //$("#p2").val(Math.floor((Math.random() * 9999) + 1));
+    //$("#p3").val(Math.floor((Math.random() * 9999) + 1));
+    //$("#p4").val(Math.floor((Math.random() * 9999) + 1));
+    //$("#p5").val(Math.floor((Math.random() * 9999) + 1));
 
     //Pre-load Task 2
     $("#t2n1").val("1,2,3,4,5");
@@ -14,12 +14,23 @@
     $("#t3n1").val(5);
 
     // Pre-load text for Palindrome
-    //$("#t4a1").val("A Man, A Plan, A Canal, Panama!");
-    //$("#t4a1").val("Are we not drawn onward, we few? Drawn onward to new era?");
-    $("#t4a1").val("Madam, I'm Adam.");
+     var palindromes = ["A Man, A Plan, A Canal, Panama!",
+                        "Are we not drawn onward, we few? Drawn onward to new era?",
+                        "Are we not drawn onward, we few? Drawn onward to a new era?",
+                        "Able was I, ere I saw Elba.",
+                        "Madam, I'm Adam."];
+    
+     task4a = function () {
+         var x = Math.floor(Math.random() * palindromes.length);
+         var x = palindromes[Math.floor((Math.random() * palindromes.length))];
+         $("#t4a1").val(x);
+     };
+
+     $('#task4a').click(task4a);
+
 
     //Pre-load Task 2.1
-    $("#t21n1").val(6);
+    //$("#t21n1").val(6);
 
     //Pre-load Task 2.5
     $("#t25n1").val(9);
@@ -54,6 +65,20 @@
         $("#maxResult").html(num + " is the max number.");
     }
     $('#task1').click(maxOfFive);
+
+
+    // randomizer button loads test data
+    task1a = function () {
+        $("#p1").val(Math.floor((Math.random() * 9999) + 1));
+        $("#p2").val(Math.floor((Math.random() * 9999) + 1));
+        $("#p3").val(Math.floor((Math.random() * 9999) + 1));
+        $("#p4").val(Math.floor((Math.random() * 9999) + 1));
+        $("#p5").val(Math.floor((Math.random() * 9999) + 1));
+    };
+    $('#task1a').click(task1a);
+
+
+
 
 
     // Task 2 -------------------------------------------------------------
@@ -98,6 +123,12 @@
         }
         return (ttl);
     };
+
+    // randomizer button loads test data
+    task3a = function () {
+        $("#t3n1").val(Math.floor((Math.random() * 10) + 2));
+     };
+    $('#task3a').click(task3a);
 
     // Task 4 -------------------------------------------------------------
     // Task 4 Palindromes
