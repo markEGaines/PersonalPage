@@ -13,23 +13,7 @@
     //Pre-load Task 3
     $("#t3n1").val(5);
 
-    // Pre-load text for Palindrome
-     var palindromes = ["A Man, A Plan, A Canal, Panama!",
-                        "Are we not drawn onward, we few? Drawn onward to new era?",
-                        "Are we not drawn onward, we few? Drawn onward to a new era?",
-                        "Able was I, ere I saw Elba.",
-                        "Madam, I'm Adam."];
-     var q = 0;
-     task4a = function () {
-      if (q < palindromes.length ) { q++ } else { q = 0 };
 
-
-         //var x = palindromes[Math.floor((Math.random() * palindromes.length))];
-         var x = palindromes[q];
-         $("#t4a1").val(x);
-     };
-
-     $('#task4a').click(task4a);
 
 
     //Pre-load Task 2.1
@@ -143,7 +127,6 @@
 
     palindrome = function(x) {
         var xAsArray = x.replace(/[\W]+/g, '').toLowerCase().split(""); // use regular expression to match any non-word character and remove it
-        var retn = "YES, it IS a Palindrome!";
         var j = xAsArray.length;
         for (var i = 0; i < j; i++) {
             j--
@@ -151,8 +134,27 @@
                 return ("No, Sorry, NOT a Palindrome");
             }
         }
-        return (retn);
+        return ("YES, it IS a Palindrome!");
     }
+
+    // suggest button text for Palindrome
+    var palindromes = ["radar",
+                       "A Man, A Plan, A Canal, Panama!",
+                       "Are we not drawn onward, we few? Drawn onward to new era?",
+                       "Are we not drawn onward, we few? Drawn onward to a new era?",
+                       "Able was I, ere I saw Elba.",
+                       "Madam, I'm Adam."];
+    var q = 0;
+    task4a = function () {
+        if (q < palindromes.length) { q++ } else { q = 0 };
+        var x = palindromes[q];
+        $("#t4a1").val(x);
+        $("#result4").html("??");
+    }
+
+    $('#task4a').click(task4a);
+
+
     // Task 5 -------------------------------------------------------------
     // Task 5 Fizz Buzz 
     // Task 5 -------------------------------------------------------------

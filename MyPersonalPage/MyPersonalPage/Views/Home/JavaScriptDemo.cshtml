@@ -322,11 +322,11 @@ factorial = function(n1) {
             <div class="modal-body col-sm-10">
                 <div class="col-sm-6 margin-small">
                     <p>This function accepts a word or sentence and checks to see if it is reversable.</p>
-                    <p>Enter some text below:</p>
+                    <p>Enter some text below: <button id="task4a" class="btn btn-primary btn-small">Suggest</button></p>
                   @*  <p><input type="text" id="t4a1" maxlength="60" size="60"></p>*@
                     <p><textarea id="t4a1" rows="4" cols="60"></textarea></p>
-                    <button id="task4a" class="btn btn-primary btn-small">Suggest</button>
-                    <p><button id="task4" onclick="task4(t4a1.value)" class="btn btn-primary btn-small">Go</button></p>
+
+                    <p><button id="task4" onclick="task4(t4a1.value)" class="btn btn-primary btn-small">Test</button></p>
                     <hr />
                     <div class="">
                         <h3 class="pull-left no-margin-top" id="result4">?</h3>
@@ -336,7 +336,6 @@ factorial = function(n1) {
                 <pre class="brush: js">
 palindrome = function(x) {
     var xAsArray = x.replace(/[\W]+/g, '').toLowerCase().split(""); 
-    var retn = "YES, it IS a Palindrome!";
     var j = xAsArray.length;
     for (var i = 0; i < j; i++) {
         j--
@@ -344,7 +343,7 @@ palindrome = function(x) {
             return ("No, Sorry, NOT a Palindrome");
         }
     }
-    return (retn);
+    return ("YES, it IS a Palindrome!");
 };
 </pre>
                 </div>

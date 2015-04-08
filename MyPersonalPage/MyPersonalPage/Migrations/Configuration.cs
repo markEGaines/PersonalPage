@@ -37,8 +37,12 @@ namespace MyPersonalPage.Migrations
                     FirstName = "Mark",
                     LastName = "Gaines",
                     DisplayName = "Mark Gaines"
-            }, "plugh");               
+                }, "Plugh4!");               
             }
+
+            var userId = userManager.FindByEmail("markegaines@gmail.com").Id;
+            userManager.AddToRole(userId, "Admin");
+
 
             
             //  This method will be called after migrating to the latest version.
