@@ -14,25 +14,23 @@
             {    
             <!-- Blog Post -->
             <!-- Title -->
-            <h1>@post.Title</h1>
+            <h2>@post.Title</h2>
             <!-- Author -->
-            <p class="lead">
+            @*<p class="lead">
                 by <a href="#">Mark Gaines</a>
             </p>
-            <hr>
+            <hr>*@
             <!-- Date/Time -->
             <p><span class="glyphicon glyphicon-time"></span> Posted on @post.Created.DateTime.ToLongDateString()</p>
-            <hr>
-            <!-- Preview Image -->
-            @*<img class="img-responsive" src="http://placehold.it/900x300" alt="">*@
-            <hr>
+
+
             <!-- Post Content -->
             <p class="lead">@Html.Raw(post.Body)</p>
             <hr>
           }
             <!-- Blog Comments -->
             <!-- Comments Form -->
-            <div class="well">
+            @*<div class="well">
                 <h4>Leave a Comment:</h4>
                 <form role="form">
                     <div class="form-group">
@@ -41,16 +39,20 @@
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
-            <hr>
+            <hr>*@
             <!-- Posted Comments -->
 
 
         </div>
         <!-- Blog Sidebar Widgets Column -->
         <div class="col-md-4">
+            <div class="well">
+                <h5>@Html.Partial("_LoginPartial")</h5>
+            </div>
+
             <!-- Blog Search Well -->
             <div class="well">
-                <h4>Blog Search</h4>
+                <h4>Blog Search</h4> 
                 <div class="input-group">
                     <input type="text" class="form-control">
                     <span class="input-group-btn">

@@ -24,7 +24,12 @@ namespace MyPersonalPage.Migrations
             {
                 roleManager.Create(new IdentityRole { Name = "Admin"});
             }
-            
+
+            if (!context.Roles.Any(r => r.Name == "Moderator"))
+            {
+                roleManager.Create(new IdentityRole { Name = "Moderator" });
+            }
+
             var userManager = new UserManager<ApplicationUser>(
                 new UserStore<ApplicationUser>(context));
 
@@ -42,9 +47,68 @@ namespace MyPersonalPage.Migrations
 
             var userId = userManager.FindByEmail("markegaines@gmail.com").Id;
             userManager.AddToRole(userId, "Admin");
+// add moderators
+            if (!context.Users.Any(r => r.Email == "lreaves@coderfoundry.com"))
+            {
+                userManager.Create(new ApplicationUser
+                {
+                    UserName = "lreaves@coderfoundry.com",
+                    Email = "lreaves@coderfoundry.com",
+                }, "Password-1");
+            }
 
+                userId = userManager.FindByEmail("lreaves@coderfoundry.com").Id;
+            userManager.AddToRole(userId, "Moderator");
+//------------------------
+            if (!context.Users.Any(r => r.Email == "bdavis@coderfoundry.com"))
+            {
+                userManager.Create(new ApplicationUser
+                {
+                    UserName = "bdavis@coderfoundry.com",
+                    Email = "bdavis@coderfoundry.com",
+                }, "Password-1");
+            }
 
-            
+            userId = userManager.FindByEmail("bdavis@coderfoundry.com").Id;
+            userManager.AddToRole(userId, "Moderator");
+//------------------------
+            if (!context.Users.Any(r => r.Email == "ajensen@coderfoundry.com"))
+            {
+                userManager.Create(new ApplicationUser
+                {
+                    UserName = "ajensen@coderfoundry.com",
+                    Email = "ajensen@coderfoundry.com",
+                }, "Password-1");
+            }
+
+            userId = userManager.FindByEmail("ajensen@coderfoundry.com").Id;
+            userManager.AddToRole(userId, "Moderator");
+//------------------------
+            if (!context.Users.Any(r => r.Email == "tjones@coderfoundry.com"))
+            {
+                userManager.Create(new ApplicationUser
+                {
+                    UserName = "tjones@coderfoundry.com",
+                    Email = "tjones@coderfoundry.com",
+                }, "Password-1");
+            }
+
+            userId = userManager.FindByEmail("tjones@coderfoundry.com").Id;
+            userManager.AddToRole(userId, "Moderator");
+//------------------------
+            if (!context.Users.Any(r => r.Email == "tparrish@coderfoundry.com"))
+            {
+                userManager.Create(new ApplicationUser
+                {
+                    UserName = "tparrish@coderfoundry.com",
+                    Email = "tparrish@coderfoundry.com",
+                }, "Password-1");
+            }
+
+            userId = userManager.FindByEmail("tparrish@coderfoundry.com").Id;
+            userManager.AddToRole(userId, "Moderator");
+//------------------------
+                        
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 

@@ -31,19 +31,33 @@ namespace MyPersonalPage.Controllers
 
         // GET: Posts/Details/5
         [AllowAnonymous]
-        public async Task<ActionResult> Details(int? id)
+        public async Task<ActionResult> Details(string Slug)
         {
-            if (id == null)
+            if (String.IsNullOrWhiteSpace(Slug))
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Post post = await db.Posts.FindAsync(id);
+            Post post = db.Posts.FirstOrDefault(p => p.Slug == Slug);
             if (post == null)
             {
                 return HttpNotFound();
             }
             return View(post);
         }
+
+        //public async Task<ActionResult> Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Post post = await db.Posts.FindAsync(id);
+        //    if (post == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(post);
+        //}
 
         // GET: Posts/Create
         public ActionResult Create()
@@ -56,17 +70,46 @@ namespace MyPersonalPage.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,Created,Updated,Title,Body,MediaUrl,Slug")] Post post)
+        public async Task<ActionResult> Create([Bind(Include = "Created,Title,Body")] Post post, HttpPostedFileBase image)
         {
             if (ModelState.IsValid)
             {
-                db.Posts.Add(post);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
-            }
+                var Slug = StringUtilities.URLFriendly(post.Title);
+                if (String.IsNullOrWhiteSpace(Slug))
+                {
+                    ModelState.AddModelError("Title", "Invalid title.");
+                    return View(post);
+                }
+                if (db.Posts.Any(p => p.Slug == Slug))
+                {
+                    ModelState.AddModelError("Title", "The title must be unique.");
+                    return View(post);
+                }
+                else
+                {
+                    post.Created = System.DateTimeOffset.Now;
+                    post.Slug = Slug;
 
+                    db.Posts.Add(post);
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
+            }
             return View(post);
         }
+
+
+        //public async Task<ActionResult> Create([Bind(Include = "Id,Created,Updated,Title,Body,MediaUrl,Slug")] Post post)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Posts.Add(post);
+        //        await db.SaveChangesAsync();
+        //        return RedirectToAction("Index");
+        //    }
+
+        //    return View(post);
+        //}
 
         // GET: Posts/Edit/5
         public async Task<ActionResult> Edit(int? id)
@@ -88,16 +131,38 @@ namespace MyPersonalPage.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Created,Updated,Title,Body,MediaUrl,Slug")] Post post)
+        //public async Task<ActionResult> Edit([Bind(Include = "Id,Created,Updated,Title,Body,MediaUrl,Slug")] Post post)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Updated,Title,Body")] Post post)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(post).State = EntityState.Modified;
+                db.Posts.Attach(post);                
+                post.Updated = System.DateTimeOffset.Now;
+                    
+                db.Entry(post).Property(p => p.Body).IsModified = true;
+                db.Entry(post).Property(p => p.Title).IsModified = true;
+                db.Entry(post).Property(p => p.Updated).IsModified = true;
+                    
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View(post);
         }
+
+        //public async Task<ActionResult> Edit([Bind(Include = "Id,Updated,Title,Body,Published")] Post post)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Entry(post).State = EntityState.Modified;
+
+        //        post.Updated = System.DateTimeOffset.Now;
+
+        //        await db.SaveChangesAsync();
+        //        return RedirectToAction("Index");
+        //    }
+        //    return View(post);
+        //}
+
 
         // GET: Posts/Delete/5
         public async Task<ActionResult> Delete(int? id)

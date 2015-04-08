@@ -146,10 +146,10 @@
                        "Madam, I'm Adam."];
     var q = 0;
     task4a = function () {
-        if (q < palindromes.length) { q++ } else { q = 0 };
+        if (q < palindromes.length -1) { q++ } else { q = 0 };
         var x = palindromes[q];
         $("#t4a1").val(x);
-        $("#result4").html("??");
+        $("#result4").html("?");
     }
 
     $('#task4a').click(task4a);
