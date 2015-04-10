@@ -54,15 +54,15 @@ namespace MyPersonalPage
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "361611997381016",
+               appSecret: "cd81b08441d658b17895259f90c42af5");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "46100048259-8cfsd5jh15vv47obalhbgbp062n3do8l.apps.googleusercontent.com",
+                ClientSecret = "_WhlLHDqHSdsCnxKk00l6cZk"
+            });
         }
     }
 }

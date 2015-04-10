@@ -21,8 +21,7 @@
             </p>
             <hr>*@
             <!-- Date/Time -->
-            <p><span class="glyphicon glyphicon-time"></span> Posted on @post.Created.DateTime.ToLongDateString()</p>
-
+            <p>@Html.ActionLink("Details", "Details", new { slug = post.Slug })   <span class="glyphicon glyphicon-time"></span> Posted on @post.Created.DateTime.ToLongDateString()</p>
 
             <!-- Post Content -->
             <p class="lead">@Html.Raw(post.Body)</p>
@@ -64,7 +63,7 @@
                 <!-- /.input-group -->
             </div>
             <!-- Blog Categories Well -->
-            <div class="well">
+            @*<div class="well">
                 <h4>Blog Categories</h4>
                 <div class="row">
                     <div class="col-lg-6">
@@ -100,12 +99,12 @@
                         </ul>
                     </div>
                 </div>
-                <!-- /.row -->
-            </div>
+                 /.row 
+            </div>*@
             <!-- Side Widget Well -->
             <div class="well">
-                <h4>Side Widget Well</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
+                <h4>Login to Leave Your Comments</h4>
+                <p>Come on, you're already here.  Share your thoughts.</p>
             </div>
         </div>
     </div>
@@ -115,7 +114,7 @@
     <footer>
         <div class="row">
             <div class="col-lg-12">
-                <p>Copyright &copy; Your Website 2014</p>
+                <p>Copyright &copy; Mark Gaines 2015</p>
             </div>
         </div>
         <!-- /.row -->
