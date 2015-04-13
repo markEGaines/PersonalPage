@@ -103,9 +103,17 @@
             </div>*@
             <!-- Side Widget Well -->
             <div class="well">
-                <h4>Login to Leave Your Comments</h4>
-                <p>Come on, you're already here.  Share your thoughts.</p>
+                <h4>Leave Your Comments</h4>
+                <p>Next week you can login to Leave Your Comments</p>
+     @*           <p>Come on, you're already here.  Share your thoughts.</p>*@
             </div>
+            @if(this.User.IsInRole("Admin"))
+            {
+            <div class="well">
+                <h4>Admin Tools</h4>
+                <p>@Html.ActionLink("Create New", "Create")</p>
+            </div>
+            }
         </div>
     </div>
     <!-- /.row -->

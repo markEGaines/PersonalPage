@@ -8,7 +8,7 @@
     <div class="row">
         <!-- Blog Post Content Column -->
         <div class="col-lg-7">
-            <h2>@Html.DisplayFor(model => model.Title)</h2>            
+            <h2>@Html.DisplayFor(model => model.Title)</h2>
             @Html.Raw(Model.Body)
         </div>
         <!-- Blog Sidebar Widgets Column -->
@@ -47,12 +47,25 @@
                     </dd>
                 </dl>
             </div>
+            @if (this.User.IsInRole("Admin"))
+            {
+                <div class="well">
+                    <h4>Admin Tools</h4>
+                    <p>@Html.ActionLink("Edit", "Edit", new { id = item.Id }) </p>
+                </div>
+            }
 
         </div>
     </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
+    <p>@Html.ActionLink("Back to List", "Index")</p>
+
+@if (this.User.IsInRole("Admin"))
+{
+    <div class="well">
+        <h4>Admin Tools</h4>
+        <p>@Html.ActionLink("Edit", "Edit")</p>
+    </div>
+}
 </div>
+
 
