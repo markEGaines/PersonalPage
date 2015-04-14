@@ -8,6 +8,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MyPersonalPage.Models;
+using PagedList;
+using PagedList.Mvc;
 
 namespace MyPersonalPage.Controllers
 {  
@@ -17,9 +19,11 @@ namespace MyPersonalPage.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         [AllowAnonymous]
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            return View(db.Posts.OrderByDescending(p => p.Created).Take(3).ToList());
+            int pageSize = 3;    // display three blog posts at a time on this page
+            int pageNumber = (page ?? 1);
+            return View(db.Posts.OrderByDescending(p => p.Created).ToPagedList(page ?? 1,3));
         }
 
 
