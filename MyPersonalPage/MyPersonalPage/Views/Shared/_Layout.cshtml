@@ -4,7 +4,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title Mark Gaines | Professional Portfolio</title>
-    <link href="~/Content/Site.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/Content/bootstrap.min.css">
     <link rel="stylesheet" href="~/Content/font-awesome.css">
     <link rel="stylesheet" href="~/Content/flexslider.css">
@@ -12,6 +11,7 @@
     <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,700,700italic,900" rel="stylesheet" type="text/css">
     @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/Site.css" rel="stylesheet" />
 
 </head>
 <body class="home" data-spy="scroll" data-target="#main-nav" data-offset="200">
@@ -50,7 +50,7 @@
                         @Html.ActionLink("My Works", "Index", "Home", null, null, "portfolio", null, new { @class = "scrollto" })
                     </li>*@
                     <li>
-                        @Html.ActionLink("Contact Me", "Index", "Home", null, null, "contact", null, new { @class = "scrollto" })
+                        @Html.ActionLink("Contact Me", "Index", "Contact", null, null, "contact", null, null)
                     </li>
                     <li>
                         @Html.ActionLink("Blog", "Index", "Posts")
