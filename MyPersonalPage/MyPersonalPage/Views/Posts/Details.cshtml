@@ -1,53 +1,98 @@
 ﻿@model MyPersonalPage.Models.Post
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Blog Post Detail";
 }
 
 <div class="container">
     <div class="row">
-
         <!-- Blog Post Content Column -->
         <div class="col-lg-7">
             <h2>@Html.DisplayFor(model => model.Title)</h2>
             @Html.Raw(Model.Body)
         </div>
-        <!-- Blog Sidebar Widgets Column -->
 
-        <div class="col-md-5">
-
+        <div class="col-lg-5">
+    <!-- Blog Search Well -->
             <div class="well">
-                <h4>Leave Your Comments</h4>
-                <p>Next week you can login to Leave Your Comments</p>
-                @*           <p>Come on, you're already here.  Share your thoughts.</p>*@
+                <h4>Blog Search</h4>
+                <div class="input-group">
+                    <input type="text" class="form-control">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>    <!-- /.input-group -->
             </div>
-@if (this.User.IsInRole("Admin"))
+
+    @if (this.User.IsInRole("Admin"))
 {
-            <div class="well">
-                <dl class="dl-horizontal">
-                    <dt>@Html.DisplayNameFor(model => model.Created)</dt>
-                    <dd>@Html.DisplayFor(model => model.Created)</dd>
 
-                    <dt>@Html.DisplayNameFor(model => model.Updated)</dt>
-                    <dd>@Html.DisplayFor(model => model.Updated)</dd>
+        <div class="well">
+            <dl class="dl-horizontal">
+                <dt>@Html.DisplayNameFor(model => model.Created)</dt>
+                <dd>@Html.DisplayFor(model => model.Created)</dd>
 
-                    <dt>@Html.DisplayNameFor(model => model.MediaUrl)</dt>
-                    <dd>@Html.DisplayFor(model => model.MediaUrl)</dd>
+                <dt>@Html.DisplayNameFor(model => model.Updated)</dt>
+                <dd>@Html.DisplayFor(model => model.Updated)</dd>
 
-                    <dt>@Html.DisplayNameFor(model => model.Slug)</dt>
-                    <dd>@Html.DisplayFor(model => model.Slug)</dd>
-                </dl>
-            </div>
+                <dt>@Html.DisplayNameFor(model => model.MediaUrl)</dt>
+                <dd>@Html.DisplayFor(model => model.MediaUrl)</dd>
 
-                <div class="well">
-                    <h4>Admin Tools</h4>
-                    <p>@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) </p>
-                    <p>@Html.ActionLink("Delete", "Delete", new { id = Model.Id }) </p>
-                </div>
-            }
-
+                <dt>@Html.DisplayNameFor(model => model.Slug)</dt>
+                <dd>@Html.DisplayFor(model => model.Slug)</dd>
+            </dl>
         </div>
-    </div>  <!--row-->
+
+        <div class="well">
+                <h4>Admin Tools</h4>
+                <p>@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) </p>
+                <p>@Html.ActionLink("Delete", "Delete", new { id = Model.Id }) </p>
+
+            </div>
+}
+        </div><!-- end of well-->
+    </div><!-- end of row-->
+
+
+    <div class="row">
+                <!-- New Comment Form -->
+                <div class="col-lg-7">
+                    <h4>Leave a Comment:</h4>
+                    <form role="form" method="post" action="@Url.Action("CreateComment","Posts")">
+                        @Html.AntiForgeryToken()
+                        <div class="form-group">
+                            <textarea name="Body" class="form-control" rows="3" ></textarea>
+                            <input type="hidden" name="PostId" id="PostId" value="@Model.Id" />
+                            <input type="hidden" name="slug" value="@Model.Slug" />
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+    </div>
+    <!-- List of Comments -->
+    <div class="row">
+
+        @foreach (var comment in Model.Comments)
+        {
+            <!-- Comment Content -->
+    <hr>
+    <div class="row">
+        <div class="col-lg-9">
+            By: @Html.DisplayFor(model => comment.Author.DisplayName) on @Html.DisplayFor(model => comment.Created)
+            <p>@Html.Raw(comment.Body)</p>
+        </div>
+        <div class="col-lg-3">
+            <button>@Html.ActionLink("Edit", "EditComment", new { id = comment.Id }) </button>
+            <button>@Html.ActionLink("Delete", "DeleteComment", new { id = comment.Id })</button>
+        </div>
+    </div>
+        }
+
+
+    </div>
+   
 
 
     <p>@Html.ActionLink("Back to List", "Index")</p>

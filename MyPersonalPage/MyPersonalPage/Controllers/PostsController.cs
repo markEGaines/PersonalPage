@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using MyPersonalPage.Models;
 using PagedList;
 using PagedList.Mvc;
+using Microsoft.AspNet.Identity;
 
 namespace MyPersonalPage.Controllers
 {  
@@ -23,7 +24,7 @@ namespace MyPersonalPage.Controllers
         {
             int pageSize = 3;    // display three blog posts at a time on this page
             int pageNumber = (page ?? 1);
-            return View(db.Posts.OrderByDescending(p => p.Created).ToPagedList(page ?? 1,3));
+            return View(db.Posts.OrderByDescending(p => p.Created).ToPagedList(page ?? 1, pageSize));
         }
 
 
@@ -33,9 +34,9 @@ namespace MyPersonalPage.Controllers
             return View(await db.Posts.ToListAsync());
         }
 
-        // GET: Posts/Details/5
+        // GET: Posts/Details
         [AllowAnonymous]
-        public async Task<ActionResult> Details(string Slug)
+        public ActionResult Details(string Slug)
         {
             if (String.IsNullOrWhiteSpace(Slug))
             {
@@ -46,22 +47,44 @@ namespace MyPersonalPage.Controllers
             {
                 return HttpNotFound();
             }
+            // sort comments in descending order
+            post.Comments = post.Comments.OrderByDescending(p => p.Created).ToList();
+
             return View(post);
         }
 
-        //public async Task<ActionResult> Details(int? id)
+        //// GET: Posts/CreateComment
+        //public ActionResult CreateComment()
         //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    Post post = await db.Posts.FindAsync(id);
-        //    if (post == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(post);
+        //    return View();
         //}
+
+        // POST: Posts/CreateComment
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> CreateComment([Bind(Include = "PostId,AuthorId,Created,Body")] Comment comment, string slug)
+        {
+            if (ModelState.IsValid)
+            {
+                if (String.IsNullOrWhiteSpace(comment.Body))
+                {
+                    ModelState.AddModelError("Body", "Missing Comment Text");
+                    return RedirectToAction("Details", new { Slug = slug });
+                }
+                    comment.Created = System.DateTimeOffset.Now;
+                    comment.AuthorId = User.Identity.GetUserId();
+
+                    db.Comments.Add(comment);
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Details", new { Slug = slug });
+              
+            }
+            return RedirectToAction("Details", new { Slug = slug});
+        }
+
+
 
         // GET: Posts/Create
         public ActionResult Create()
@@ -102,20 +125,47 @@ namespace MyPersonalPage.Controllers
             return View(post);
         }
 
+        // GET: Posts/EditComment
+        public async Task<ActionResult> EditComment(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Comment comment = await db.Comments.FindAsync(id);
+            if (comment == null)
+            {
+                return HttpNotFound();
+            }
+            return View(comment);
+        }
 
-        //public async Task<ActionResult> Create([Bind(Include = "Id,Created,Updated,Title,Body,MediaUrl,Slug")] Post post)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Posts.Add(post);
-        //        await db.SaveChangesAsync();
-        //        return RedirectToAction("Index");
-        //    }
+        // POST: Posts/EditComment
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        //public async Task<ActionResult> Edit([Bind(Include = "Id,Created,Updated,Title,Body,MediaUrl,Slug")] Post post)
+        public async Task<ActionResult> EditComment([Bind(Include = "Created,Id,Updated,AuthorId,Body,PostId")] Comment comment)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Comments.Attach(comment);
+                comment.Updated = System.DateTimeOffset.Now;
 
-        //    return View(post);
-        //}
+                db.Entry(comment).State = EntityState.Modified;
 
-        // GET: Posts/Edit/5
+                Post post = db.Posts.Find(comment.PostId);
+
+                await db.SaveChangesAsync();
+                return RedirectToAction("Details", new { slug = post.Slug });
+                //return View();
+            }
+            return View(comment);
+        }
+
+
+        // GET: Posts/Edit
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
@@ -130,7 +180,7 @@ namespace MyPersonalPage.Controllers
             return View(post);
         }
 
-        // POST: Posts/Edit/5
+        // POST: Posts/Edit
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -152,21 +202,6 @@ namespace MyPersonalPage.Controllers
             }
             return View(post);
         }
-
-        //public async Task<ActionResult> Edit([Bind(Include = "Id,Updated,Title,Body,Published")] Post post)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Entry(post).State = EntityState.Modified;
-
-        //        post.Updated = System.DateTimeOffset.Now;
-
-        //        await db.SaveChangesAsync();
-        //        return RedirectToAction("Index");
-        //    }
-        //    return View(post);
-        //}
-
 
         // GET: Posts/Delete/5
         public async Task<ActionResult> Delete(int? id)
@@ -202,5 +237,37 @@ namespace MyPersonalPage.Controllers
             }
             base.Dispose(disposing);
         }
+
+        // GET: Posts/DeleteComment
+        public async Task<ActionResult> DeleteComment(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Comment comment = await db.Comments.FindAsync(id);
+            if (comment == null)
+            {
+                return HttpNotFound();
+            }
+            return View(comment);
+        }
+
+        // POST: Posts/DeleteComment
+        [HttpPost, ActionName("DeleteComment")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DeleteCommentConfirmed(int id)
+        {
+            Comment comment = await db.Comments.FindAsync(id);
+            Post post = db.Posts.Find(comment.PostId);
+            db.Comments.Remove(comment);
+            await db.SaveChangesAsync();
+            return RedirectToAction("Details", new { slug = post.Slug });
+        }
+
+   
+
+
+
     }
 }
