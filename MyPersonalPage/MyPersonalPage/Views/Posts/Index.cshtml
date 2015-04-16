@@ -1,5 +1,4 @@
 ﻿@using MyPersonalPage.Models
-
 @using PagedList
 @using PagedList.Mvc
 
@@ -16,12 +15,11 @@
 
             @foreach (var post in Model)
             {
-            <!-- Blog Post -->
-            <!-- Title -->
-                <h2>@post.Title</h2>
-
+            <!-- Post Title as a link -->    
+                <h2>@Html.ActionLink(@post.Title, "Details", new { slug = post.Slug }) </h2>
+                
             <!-- Date/Time -->
-                <p>@Html.ActionLink("Details", "Details", new { slug = post.Slug })   <span class="glyphicon glyphicon-time"></span> Posted on @post.Created.DateTime.ToLongDateString()</p>
+                <p> <span class="glyphicon glyphicon-time"></span> Posted on @post.Created.DateTime.ToLongDateString()</p>
 
             <!-- Post Content -->
                 <p class="lead">@Html.Raw(post.Body)</p>

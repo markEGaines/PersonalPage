@@ -55,7 +55,8 @@
         </div><!-- end of well-->
     </div><!-- end of row-->
 
-
+@if (this.User.Identity.IsAuthenticated)
+{
     <div class="row">
                 <!-- New Comment Form -->
                 <div class="col-lg-7">
@@ -71,23 +72,30 @@
                     </form>
                 </div>
     </div>
+}   
+    
     <!-- List of Comments -->
     <div class="row">
 
         @foreach (var comment in Model.Comments)
         {
             <!-- Comment Content -->
-    <hr>
-    <div class="row">
-        <div class="col-lg-9">
-            By: @Html.DisplayFor(model => comment.Author.DisplayName) on @Html.DisplayFor(model => comment.Created)
-            <p>@Html.Raw(comment.Body)</p>
+        <hr>
+        <div class="row">
+            <div class="col-lg-9">
+                By: @Html.DisplayFor(model => comment.Author.DisplayName) on @Html.DisplayFor(model => comment.Created)
+                <p>@Html.Raw(comment.Body)</p>
+            </div>
+
+            @if (this.User.IsInRole("Admin") || this.User.IsInRole("Moderator"))
+            {
+
+                <div class="col-lg-3">
+                    <button>@Html.ActionLink("Edit", "EditComment", new { id = comment.Id }) </button>
+                    <button>@Html.ActionLink("Delete", "DeleteComment", new { id = comment.Id })</button>
+                </div>
+            }    
         </div>
-        <div class="col-lg-3">
-            <button>@Html.ActionLink("Edit", "EditComment", new { id = comment.Id }) </button>
-            <button>@Html.ActionLink("Delete", "DeleteComment", new { id = comment.Id })</button>
-        </div>
-    </div>
         }
 
 
