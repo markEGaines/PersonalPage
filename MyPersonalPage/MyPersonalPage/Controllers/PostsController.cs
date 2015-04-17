@@ -42,11 +42,15 @@ namespace MyPersonalPage.Controllers
             int pageNumber = (page ?? 1);
 
             var searched = from p in db.Posts
-                           where searchString == "" || searchString == null || p.Body.Contains(searchString) ||
-                           p.Title.Contains(searchString) || p.Comments.Any(c => c.Body.Contains(searchString))
+                           where searchString == "" || searchString == null || 
+                           p.Body.Contains(searchString) ||
+                           p.Title.Contains(searchString) ||
+                           p.Comments.Any(c => c.Body.Contains(searchString) || 
+                               c.Author.DisplayName.Contains(searchString))
                            orderby p.Created descending
                            select p;
-            
+
+            ViewBag.found = searched.Count();
 
             //var searched = db.Posts.OrderByDescending(p => p.Created).ToPagedList(pageNumber, pageSize);
             
