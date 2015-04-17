@@ -11,6 +11,7 @@ using MyPersonalPage.Models;
 using PagedList;
 using PagedList.Mvc;
 using Microsoft.AspNet.Identity;
+using System.IO;
 
 namespace MyPersonalPage.Controllers
 {  
@@ -19,14 +20,40 @@ namespace MyPersonalPage.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        //[AllowAnonymous]
+        //public ActionResult Index(int? page)
+        //{
+        //    int pageSize = 3;    // display three blog posts at a time on this page
+        //    int pageNumber = (page ?? 1);
+        //    return View(db.Posts.OrderByDescending(p => p.Created).ToPagedList(page ?? 1, pageSize));
+        //}
+
         [AllowAnonymous]
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page, string searchString)
         {
+            var lastSearch = TempData["lastSearch"] as string;
+            if (lastSearch != searchString)
+            {
+                page = 1;            
+                TempData["lastSearch"] = searchString;
+            }
+
             int pageSize = 3;    // display three blog posts at a time on this page
             int pageNumber = (page ?? 1);
-            return View(db.Posts.OrderByDescending(p => p.Created).ToPagedList(page ?? 1, pageSize));
-        }
 
+            var searched = from p in db.Posts
+                           where searchString == "" || searchString == null || p.Body.Contains(searchString) ||
+                           p.Title.Contains(searchString) || p.Comments.Any(c => c.Body.Contains(searchString))
+                           orderby p.Created descending
+                           select p;
+            
+
+            //var searched = db.Posts.OrderByDescending(p => p.Created).ToPagedList(pageNumber, pageSize);
+            
+            ViewBag.searchString = searchString;
+
+            return View(searched.ToPagedList(pageNumber, pageSize));
+        }
 
         // GET: Posts
         public async Task<ActionResult> AdminIndex()
@@ -97,8 +124,17 @@ namespace MyPersonalPage.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Created,Title,Body")] Post post, HttpPostedFileBase image)
+        public async Task<ActionResult> Create([Bind(Include = "Created,Title,Body,MediaUrl")] Post post, HttpPostedFileBase image)
         {
+            if (image != null && image.ContentLength > 0)
+            {
+                // check the file name to make sure it's an image type
+                var ext = Path.GetExtension(image.FileName);
+                if (ext != ".png" && ext != ".jpg" && ext != ".jpeg")
+                    ModelState.AddModelError("image", "Invalid format.");
+            }
+
+
             if (ModelState.IsValid)
             {
                 var Slug = StringUtilities.URLFriendly(post.Title);
@@ -114,6 +150,16 @@ namespace MyPersonalPage.Controllers
                 }
                 else
                 {
+                 ////relative server path
+                 //var filePath = "/Uploads/blog/images/";
+                 ////path on physical drive on the server
+                 //var absPath = Server.MapPath("~" + filePath);
+                 ////media Url for relative path
+                 //post.MediaUrl = filePath + image.FileName;
+                 ////save image
+                 //image.SaveAs(Path.Combine(absPath, image.FileName));
+
+
                     post.Created = System.DateTimeOffset.Now;
                     post.Slug = Slug;
 
@@ -186,7 +232,7 @@ namespace MyPersonalPage.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         //public async Task<ActionResult> Edit([Bind(Include = "Id,Created,Updated,Title,Body,MediaUrl,Slug")] Post post)
-        public async Task<ActionResult> Edit([Bind(Include = "Id,Updated,Title,Body")] Post post)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Updated,Title,Body,MediaUrl")] Post post)
         {
             if (ModelState.IsValid)
             {
@@ -194,8 +240,9 @@ namespace MyPersonalPage.Controllers
                 post.Updated = System.DateTimeOffset.Now;
                     
                 db.Entry(post).Property(p => p.Body).IsModified = true;
-                db.Entry(post).Property(p => p.Title).IsModified = true;
+                //db.Entry(post).Property(p => p.Title).IsModified = true;
                 db.Entry(post).Property(p => p.Updated).IsModified = true;
+                db.Entry(post).Property(p => p.MediaUrl).IsModified = true;
                     
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");

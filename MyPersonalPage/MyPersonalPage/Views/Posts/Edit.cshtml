@@ -4,19 +4,21 @@
     ViewBag.Title = "Edit";
 }
 
+
+
+    <div class="container">
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-}
 
-    <div class="container">
+
         <div class="form-horizontal">
 
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.HiddenFor(model => model.Id)
 
 
-            <h2>@Html.DisplayFor(model => model.Title)</h2>
+            <h2>@Html.DisplayFor(model => model.Title)</h2><input type="hidden" name="Title" value="@Model.Title" />
 
             <div class="form-group">
                 @Html.LabelFor(model => model.Body, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -40,7 +42,7 @@
                 </div>
             </div>
         </div>
-        
+        }
 
         <div>
             @Html.ActionLink("Back to List", "Index")

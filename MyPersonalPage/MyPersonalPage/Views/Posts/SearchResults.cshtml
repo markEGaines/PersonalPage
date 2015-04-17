@@ -21,15 +21,13 @@
             <!-- Date/Time -->
                 <p> <span class="glyphicon glyphicon-time"></span> Posted on @post.Created.DateTime.ToLongDateString()</p>
 
-                <img class="img-responsive" src="@post.MediaUrl" style="max-height:300px" />
-                
             <!-- Post Content -->
                 <p class="lead">@Html.Raw(post.Body)</p>
                 <hr>
             }
             Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount 
 
-            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, ViewBag.searchString }))
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
 
         </div>
 
@@ -44,16 +42,14 @@
                 <!-- Blog Search Well -->
                 <div class="well">
                     <h4>Blog Search</h4>
-                    @using (Html.BeginForm()) { 
                     <div class="input-group">
-                        <input type="text" class="form-control" name="searchString" value="@ViewBag.searchString"/>
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="submit"  >
-                                    <span class="glyphicon glyphicon-search"></span>
-                                </button>
-                            </span>
-                    </div>   <!-- /.input-group -->
-                    }
+                        <input type="text" class="form-control">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>    <!-- /.input-group -->
                 </div>
 
 
