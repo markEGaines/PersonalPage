@@ -13,10 +13,9 @@
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.HiddenFor(model => model.Id)
 
-
-            <h2>@*@Html.DisplayFor(model => model.Id)*@</h2>
-
             <div class="form-group">
+
+                <h2>@Html.DisplayFor(model => Model.Post.Title)</h2>
 
                     @Html.TextAreaFor(model => Model.Body, new { @class = "form-control", rows = "5", id = "editor" })
                     @Html.ValidationMessageFor(model => Model.Body, "", new { @class = "text-danger" })
