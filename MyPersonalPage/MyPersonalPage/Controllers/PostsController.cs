@@ -15,7 +15,7 @@ using System.IO;
 
 namespace MyPersonalPage.Controllers
 {  
-    [Authorize(Roles="Admin")]
+
     public class PostsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -118,6 +118,7 @@ namespace MyPersonalPage.Controllers
 
 
         // GET: Posts/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -128,6 +129,7 @@ namespace MyPersonalPage.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Create([Bind(Include = "Created,Title,Body,MediaUrl")] Post post, HttpPostedFileBase image)
         {
             if (image != null && image.ContentLength > 0)
@@ -176,6 +178,7 @@ namespace MyPersonalPage.Controllers
         }
 
         // GET: Posts/EditComment
+        [Authorize(Roles = "Admin, Moderator")]
         public async Task<ActionResult> EditComment(int? id)
         {
             if (id == null)
@@ -195,6 +198,7 @@ namespace MyPersonalPage.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Moderator")]
         //public async Task<ActionResult> Edit([Bind(Include = "Id,Created,Updated,Title,Body,MediaUrl,Slug")] Post post)
         public async Task<ActionResult> EditComment([Bind(Include = "Created,Id,Updated,AuthorId,Body,PostId")] Comment comment)
         {
@@ -216,6 +220,7 @@ namespace MyPersonalPage.Controllers
 
 
         // GET: Posts/Edit
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
@@ -235,6 +240,7 @@ namespace MyPersonalPage.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         //public async Task<ActionResult> Edit([Bind(Include = "Id,Created,Updated,Title,Body,MediaUrl,Slug")] Post post)
         public async Task<ActionResult> Edit([Bind(Include = "Id,Updated,Title,Body,MediaUrl")] Post post)
         {
@@ -272,6 +278,7 @@ namespace MyPersonalPage.Controllers
         // POST: Posts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             Post post = await db.Posts.FindAsync(id);
@@ -290,6 +297,7 @@ namespace MyPersonalPage.Controllers
         }
 
         // GET: Posts/DeleteComment
+        [Authorize(Roles = "Admin, Moderator")]
         public async Task<ActionResult> DeleteComment(int? id)
         {
             if (id == null)
@@ -307,6 +315,7 @@ namespace MyPersonalPage.Controllers
         // POST: Posts/DeleteComment
         [HttpPost, ActionName("DeleteComment")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Moderator")]
         public async Task<ActionResult> DeleteCommentConfirmed(int id)
         {
             Comment comment = await db.Comments.FindAsync(id);
