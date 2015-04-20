@@ -14,12 +14,16 @@
             @Html.HiddenFor(model => model.Id)
 
 
-            @*<h2>@Html.DisplayFor(model => model.Title)</h2>*@
+            <h2>@*@Html.DisplayFor(model => model.Id)*@</h2>
 
             <div class="form-group">
 
                     @Html.TextAreaFor(model => Model.Body, new { @class = "form-control", rows = "5", id = "editor" })
                     @Html.ValidationMessageFor(model => Model.Body, "", new { @class = "text-danger" })
+
+                <h4>Reason for this update?: </h4> 
+                @Html.TextAreaFor(model => Model.UpdatedReason, new { @class = "form-control", rows = "1", id = "editor" })
+                @*<input type="text" name="UpdatedReason" size="90" value="@Model.UpdatedReason" />*@
 
                 <input type="hidden" name="postId" value="@Model.PostId" />
                 <input type="hidden" name="created" value="@Model.Created" />

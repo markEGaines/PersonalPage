@@ -200,7 +200,7 @@ namespace MyPersonalPage.Controllers
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin, Moderator")]
         //public async Task<ActionResult> Edit([Bind(Include = "Id,Created,Updated,Title,Body,MediaUrl,Slug")] Post post)
-        public async Task<ActionResult> EditComment([Bind(Include = "Created,Id,Updated,AuthorId,Body,PostId")] Comment comment)
+        public async Task<ActionResult> EditComment([Bind(Include = "Created,Id,Updated,UpdatedReason,AuthorId,Body,PostId")] Comment comment)
         {
             if (ModelState.IsValid)
             {

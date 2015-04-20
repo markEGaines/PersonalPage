@@ -9,7 +9,18 @@
         <!-- Blog Post Content Column -->
         <div class="col-lg-7">
             <h2>@Html.DisplayFor(model => model.Title)</h2>
-            @Html.Raw(Model.Body)
+
+
+            <!-- Date/Time -->
+            <p> <span class="glyphicon glyphicon-time"></span> Posted on @Model.Created.DateTime.ToLongDateString()</p>
+            
+            <!-- image -->
+            <img class="img-responsive" src="@Html.DisplayFor(model => model.MediaUrl)" style="max-height:300px" />
+
+            <!-- Post Content -->
+            <p class="lead">@Html.Raw(Model.Body)</p>
+            <hr>
+
         </div>
 
         <div class="col-lg-5">
@@ -60,7 +71,17 @@
                     </form>
                 </div>
     </div>
-}   
+}
+else
+{
+    <div class="row">
+        <!-- New Comment Form -->
+        <div class="col-lg-7">
+            <h4>@Html.ActionLink("You must log in to leave a comment", "Login","Account") </h4>
+
+        </div>
+    </div>
+}
     
     <!-- List of Comments -->
     <div class="row">
@@ -91,7 +112,7 @@
    
 
 
-    <p>@Html.ActionLink("Back to List", "Index")</p>
+    <h4>@Html.ActionLink("Back to List", "Index")</h4>
 </div>  <!-- container -->
 
 
