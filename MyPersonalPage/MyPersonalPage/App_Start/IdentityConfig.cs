@@ -45,7 +45,7 @@ namespace MyPersonalPage
             var transportWeb = new Web(credentials);
 
             // Send the email.
-            transportWeb.Deliver(myMessage);
+            transportWeb.DeliverAsync(myMessage);
 
 
             return Task.FromResult(0);
