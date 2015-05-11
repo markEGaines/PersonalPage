@@ -219,6 +219,7 @@
     <Content Include="assets\logo.png" />
     <Content Include="assets\Mark360.jpg" />
     <Content Include="assets\projects\company-logo.png" />
+    <Content Include="assets\Mark240.jpg" />
     <Content Include="assets\projects\masterClass\bug_with_attitude.jpg" />
     <Content Include="assets\projects\masterClass\javaScript.jpg" />
     <Content Include="assets\projects\project-slide.jpg" />
