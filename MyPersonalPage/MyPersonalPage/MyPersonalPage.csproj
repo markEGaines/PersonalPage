@@ -217,7 +217,10 @@
     <Content Include="assets\imac.png" />
     <Content Include="assets\loader.gif" />
     <Content Include="assets\logo.png" />
+    <Content Include="assets\Mark360.jpg" />
     <Content Include="assets\projects\company-logo.png" />
+    <Content Include="assets\projects\masterClass\bug_with_attitude.jpg" />
+    <Content Include="assets\projects\masterClass\javaScript.jpg" />
     <Content Include="assets\projects\project-slide.jpg" />
     <Content Include="assets\projects\project-thumb.jpg" />
     <Content Include="Content\bootstrap-theme.css" />

@@ -5,7 +5,7 @@
 <!-- ==============================================
 HEADER
 =============================================== -->
-<header id="home" class="jumbotron" > 
+<header id="home" class="jumbotron">
     <div class="container">
         <div class="message-box clearfix">
             <div class="left-col">
@@ -83,11 +83,11 @@ ABOUT
 
         <div class="row">
             <div class="col-sm-4 col-sm-offset-1 scrollimation fade-right">
-                <img class="img-responsive img-circle img-center" src="/assets/about.jpg" alt="">
+                <img class="img-responsive img-rounded img-center" src="/assets/Mark360.jpg" alt="">
             </div>
             <div class="col-sm-6 col-sm-offset-1 scrollimation fade-left">
                 <h1>Hello, I am Mark Gaines...</h1>
-                <p>I'm a user web developer living in <a href="https://www.google.com/maps/place/Brecksville,+OH">Brecksville, Ohio</a>. <br />Creating is not just a job for me, it's a passion. </p>
+                <p>I'm a web developer living in <a href="https://www.google.com/maps/place/Brecksville,+OH">Brecksville, Ohio</a>. <br />Creating is not just a job for me, it's a passion. </p>
                 <a href="#portfolio" class="btn btn-theme transparent scrollto">View my Works</a>
             </div>
         </div><!--End row -->
@@ -130,11 +130,11 @@ PORTFOLIO
 =============================================== -->
 
 <div>
-    @*<section id="portfolio">
+    <section id="portfolio">
 
         <div id="portfolio-header" class="container text-center">
 
-            <h1 class="section-title scrollimation scale-in">The <span>works</span> I am proud of<i class="icon-pencil"></i></h1>
+            <h1 class="section-title scrollimation scale-in">My<span>work</span><i class="icon-pencil"></i></h1>
 
             <!--==== Portfolio Filters ====-->
             <div id="filter-works">
@@ -143,203 +143,65 @@ PORTFOLIO
                         <a href="#fake" data-filter="*">All</a>
                     </li>
                     <li>
-                        <a href="#fake" data-filter=".web-design">Web Design</a>
+                        <a href="#fake" data-filter=".master-class">master Class</a>
                     </li>
                     <li>
-                        <a href="#fake" data-filter=".icons">Icons</a>
-                    </li>
-                    <li>
-                        <a href="#fake" data-filter=".ui-kits">UI Kits</a>
+                        <a href="#fake" data-filter=".icons">Commercial</a>
                     </li>
                 </ul>
             </div><!--End portfolio filters -->
-
         </div><!--End portfolio header -->
 
         <div class="container masonry-wrapper scrollimation fade-in">
-
             <div id="projects-container">
-
                 <!-- ==============================================
-                SINGLE PROJECT ITEM
+                SINGLE PROJECT ITEM  JAVASCRIPT EXCERCISES
                 =============================================== -->
-                <a class="project-item web-design" href="http://www.google.com" data-images="/assets/projects/project-slide.jpg, /assets/projects/project-slide.jpg">
+                <a class="project-item master-class" href="https://mgaines1.azurewebsites.net/Home/JavaScriptDemo" data-images=" ">
 
-                    <img class="img-responsive project-image" src="/assets/projects/project-thumb.jpg" alt=""><!--Project thumb -->
+                    <img class=" img-responsive project-image" src="~/assets/projects/masterClass/javaScript.jpg" alt="">
+                    <!--Project thumb -->
 
                     <div class="hover-mask">
-                        <h2 class="project-title">Project 1</h2><!--Project Title -->
-                        <p>google.com</p><!--Project Subtitle -->
+                        <h2 class="project-title">JavaScript Exercises</h2><!--Project Title -->
+                        <p>warm up</p><!--Project Subtitle -->
                     </div>
 
                     <!--==== Project Preview HTML ====-->
 
                     <div class="sr-only project-description">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien risus, blandit at fringilla ac, varius sed dolor. Donec augue lacus, vulputate sed consectetur facilisis, interdum pharetra ligula. Nulla suscipit erat nibh, ut porttitor nisl dapibus eu.</p>
-                        <img class="img-responsive img-center" src="/assets/projects/company-logo.png" alt="">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien risus, blandit at fringilla ac, varius sed dolor. Donec augue lacus, vulputate sed consectetur facilisis, interdum pharetra ligula. Nulla suscipit erat nibh, ut porttitor nisl dapibus eu.</p>
-                        <p>Nam eget urna pellentesque nisl ultrices dapibus. Mauris accumsan vehicula nisl, sed tempus mauris facilisis eu. Donec a iaculis nisi, quis malesuada justo. Pellentesque ut enim sit amet ipsum dignissim egestas. Morbi tincidunt rhoncus urna eget placerat.</p>
+                        @*     <p>This project is a warm up for the CoderFoundry Master Class</p>*@
+                        @*<img class="img-responsive img-center" src="/assets/projects/company-logo.png" alt="">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien risus, blandit at fringilla ac, varius sed dolor. Donec augue lacus, vulputate sed consectetur facilisis, interdum pharetra ligula. Nulla suscipit erat nibh, ut porttitor nisl dapibus eu.</p>
+                <p>Nam eget urna pellentesque nisl ultrices dapibus. Mauris accumsan vehicula nisl, sed tempus mauris facilisis eu. Donec a iaculis nisi, quis malesuada justo. Pellentesque ut enim sit amet ipsum dignissim egestas. Morbi tincidunt rhoncus urna eget placerat.</p>*@
                     </div>
-
                 </a>
-                <!-- ==============================================
-                END PROJECT ITEM
-                =============================================== -->
 
-                <a class="project-item icons ui-kits" href="#somelink" data-images="/assets/projects/project-slide.jpg, /assets/projects/project-slide.jpg">
+   <!-- ==============================================
+        SINGLE PROJECT ITEM  BugSMEAR
+        =============================================== -->
 
-                    <img class="img-responsive project-image" src="/assets/projects/project-thumb.jpg" alt=""><!--Project thumb -->
+
+                <a class="project-item master-class" href="http://mgaines-bugsmear.azurewebsites.net/" data-images="/assets/projects/project-slide.jpg, /assets/projects/project-slide.jpg">
+
+                    <img class="img-responsive project-image" src="~/assets/projects/masterClass/bug_with_attitude.jpg" alt=""><!--Project thumb -->
 
                     <div class="hover-mask">
-                        <h2 class="project-title">Project 2</h2><!--Project Title -->
-                        <p>microsoft.com</p><!--Project Subtitle -->
+                        <h2 class="project-title">BugSMEAR</h2><!--Project Title -->
+                        <p></p><!--Project Subtitle -->
                     </div>
 
                     <!--==== Project Preview HTML ====-->
 
                     <div class="sr-only project-description">
-                        <p class="clearfix">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien risus, blandit at fringilla ac, varius sed dolor. Donec augue lacus, vulputate sed consectetur facilisis, interdum pharetra ligula. Nulla suscipit erat nibh, ut porttitor nisl dapibus eu.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien risus, blandit at fringilla ac, varius sed dolor. Donec augue lacus, vulputate sed consectetur facilisis, interdum pharetra ligula. Nulla suscipit erat nibh, ut porttitor nisl dapibus eu.</p>
-                        <img class="img-responsive img-center" src="/assets/projects/company-logo.png" alt="">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien risus, blandit at fringilla ac, varius sed dolor. Donec augue lacus, vulputate sed consectetur facilisis, interdum pharetra ligula. Nulla suscipit erat nibh, ut porttitor nisl dapibus eu. Nam eget urna pellentesque nisl ultrices dapibus. Mauris accumsan vehicula nisl, sed tempus mauris facilisis eu. Donec a iaculis nisi, quis malesuada justo. Pellentesque ut enim sit amet ipsum dignissim egestas. Morbi tincidunt rhoncus urna eget placerat.</p>
-                    </div>
-
-                </a><!--End Project Item -->
-                <a class="project-item web-design ui-kits" href="#somelink" data-images="/assets/projects/project-slide.jpg, /assets/projects/project-slide.jpg">
-
-                    <img class="img-responsive project-image" src="/assets/projects/project-thumb.jpg" alt=""><!--Project thumb -->
-
-                    <div class="hover-mask">
-                        <h2 class="project-title">Project 3</h2><!--Project Title -->
-                        <p>amazon.com</p><!--Project Subtitle -->
-                    </div>
-
-                    <!--==== Project Preview HTML ====-->
-
-                    <div class="sr-only project-description">
-                        <p class="clearfix">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien risus, blandit at fringilla ac, varius sed dolor. Donec augue lacus, vulputate sed consectetur facilisis, interdum pharetra ligula. Nulla suscipit erat nibh, ut porttitor nisl dapibus eu.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien risus, blandit at fringilla ac, varius sed dolor. Donec augue lacus, vulputate sed consectetur facilisis, interdum pharetra ligula. Nulla suscipit erat nibh, ut porttitor nisl dapibus eu.</p>
-                        <img class="img-responsive img-center" src="/assets/projects/company-logo.png" alt="">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien risus, blandit at fringilla ac, varius sed dolor. Donec augue lacus, vulputate sed consectetur facilisis, interdum pharetra ligula. Nulla suscipit erat nibh, ut porttitor nisl dapibus eu.</p>
-                    </div>
-
-                </a><!--End Project Item -->
-                <a class="project-item ui-kits" href="http://www.google.com" data-images="/assets/projects/project-slide.jpg, /assets/projects/project-slide.jpg">
-
-                    <img class="img-responsive project-image" src="/assets/projects/project-thumb.jpg" alt=""><!--Project thumb -->
-
-                    <div class="hover-mask">
-                        <h2 class="project-title">Project 4</h2><!--Project Title -->
-                        <p>google.com</p><!--Project Subtitle -->
-                    </div>
-
-                    <!--==== Project Preview HTML ====-->
-
-                    <div class="sr-only project-description">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien risus, blandit at fringilla ac, varius sed dolor. Donec augue lacus, vulputate sed consectetur facilisis, interdum pharetra ligula. Nulla suscipit erat nibh, ut porttitor nisl dapibus eu.</p>
-                        <img class="img-responsive img-center" src="/assets/projects/company-logo.png" alt="">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien risus, blandit at fringilla ac, varius sed dolor. Donec augue lacus, vulputate sed consectetur facilisis, interdum pharetra ligula. Nulla suscipit erat nibh, ut porttitor nisl dapibus eu.</p>
-                        <p>Nam eget urna pellentesque nisl ultrices dapibus. Mauris accumsan vehicula nisl, sed tempus mauris facilisis eu. Donec a iaculis nisi, quis malesuada justo. Pellentesque ut enim sit amet ipsum dignissim egestas. Morbi tincidunt rhoncus urna eget placerat.</p>
-                    </div>
-
-                </a><!--End Project Item -->
-                <a class="project-item icons" href="#somelink" data-images="/assets/projects/project-slide.jpg, /assets/projects/project-slide.jpg">
-
-                    <img class="img-responsive project-image" src="/assets/projects/project-thumb.jpg" alt=""><!--Project thumb -->
-
-                    <div class="hover-mask">
-                        <h2 class="project-title">Project 5</h2><!--Project Title -->
-                        <p>microsoft.com</p><!--Project Subtitle -->
-                    </div>
-
-                    <!--==== Project Preview HTML ====-->
-
-                    <div class="sr-only project-description">
-                        <p class="clearfix">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien risus, blandit at fringilla ac, varius sed dolor. Donec augue lacus, vulputate sed consectetur facilisis, interdum pharetra ligula. Nulla suscipit erat nibh, ut porttitor nisl dapibus eu.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien risus, blandit at fringilla ac, varius sed dolor. Donec augue lacus, vulputate sed consectetur facilisis, interdum pharetra ligula. Nulla suscipit erat nibh, ut porttitor nisl dapibus eu.</p>
-                        <img class="img-responsive img-center" src="/assets/projects/company-logo.png" alt="">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien risus, blandit at fringilla ac, varius sed dolor. Donec augue lacus, vulputate sed consectetur facilisis, interdum pharetra ligula. Nulla suscipit erat nibh, ut porttitor nisl dapibus eu. Nam eget urna pellentesque nisl ultrices dapibus. Mauris accumsan vehicula nisl, sed tempus mauris facilisis eu. Donec a iaculis nisi, quis malesuada justo. Pellentesque ut enim sit amet ipsum dignissim egestas. Morbi tincidunt rhoncus urna eget placerat.</p>
-                    </div>
-
-                </a><!--End Project Item -->
-                <a class="project-item web-design" href="#somelink" data-images="/assets/projects/project-slide.jpg, /assets/projects/project-slide.jpg">
-
-                    <img class="img-responsive project-image" src="/assets/projects/project-thumb.jpg" alt=""><!--Project thumb -->
-
-                    <div class="hover-mask">
-                        <h2 class="project-title">Project 6</h2><!--Project Title -->
-                        <p>amazon.com</p><!--Project Subtitle -->
-                    </div>
-
-                    <!--==== Project Preview HTML ====-->
-
-                    <div class="sr-only project-description">
-                        <p class="clearfix">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien risus, blandit at fringilla ac, varius sed dolor. Donec augue lacus, vulputate sed consectetur facilisis, interdum pharetra ligula. Nulla suscipit erat nibh, ut porttitor nisl dapibus eu.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien risus, blandit at fringilla ac, varius sed dolor. Donec augue lacus, vulputate sed consectetur facilisis, interdum pharetra ligula. Nulla suscipit erat nibh, ut porttitor nisl dapibus eu.</p>
-                        <img class="img-responsive img-center" src="/assets/projects/company-logo.png" alt="">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien risus, blandit at fringilla ac, varius sed dolor. Donec augue lacus, vulputate sed consectetur facilisis, interdum pharetra ligula. Nulla suscipit erat nibh, ut porttitor nisl dapibus eu.</p>
-                    </div>
-
-                </a><!--End Project Item -->
-                <a class="project-item web-design" href="http://www.google.com" data-images="/assets/projects/project-slide.jpg, /assets/projects/project-slide.jpg">
-
-                    <img class="img-responsive project-image" src="/assets/projects/project-thumb.jpg" alt=""><!--Project thumb -->
-
-                    <div class="hover-mask">
-                        <h2 class="project-title">Project 7</h2><!--Project Title -->
-                        <p>google.com</p><!--Project Subtitle -->
-                    </div>
-
-                    <!--==== Project Preview HTML ====-->
-
-                    <div class="sr-only project-description">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien risus, blandit at fringilla ac, varius sed dolor. Donec augue lacus, vulputate sed consectetur facilisis, interdum pharetra ligula. Nulla suscipit erat nibh, ut porttitor nisl dapibus eu.</p>
-                        <img class="img-responsive img-center" src="/assets/projects/company-logo.png" alt="">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien risus, blandit at fringilla ac, varius sed dolor. Donec augue lacus, vulputate sed consectetur facilisis, interdum pharetra ligula. Nulla suscipit erat nibh, ut porttitor nisl dapibus eu.</p>
-                        <p>Nam eget urna pellentesque nisl ultrices dapibus. Mauris accumsan vehicula nisl, sed tempus mauris facilisis eu. Donec a iaculis nisi, quis malesuada justo. Pellentesque ut enim sit amet ipsum dignissim egestas. Morbi tincidunt rhoncus urna eget placerat.</p>
+                        <p class="clearfix">A bugtracker with an acronym.  It features: code first database development</p>
+                        <p>a Simple Method Ensures Appropriate Resolutions</p>
+                        @*<img class="img-responsive img-center" src="/assets/projects/company-logo.png" alt="">*@
+                        <p></p>
                     </div>
 
                 </a><!--End Project Item -->
 
-                <a class="project-item icons" href="#somelink" data-images="/assets/projects/project-slide.jpg, /assets/projects/project-slide.jpg">
-
-                    <img class="img-responsive project-image" src="/assets/projects/project-thumb.jpg" alt=""><!--Project thumb -->
-
-                    <div class="hover-mask">
-                        <h2 class="project-title">Project 8</h2><!--Project Title -->
-                        <p>microsoft.com</p><!--Project Subtitle -->
-                    </div>
-
-                    <!--==== Project Preview HTML ====-->
-
-                    <div class="sr-only project-description">
-                        <p class="clearfix">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien risus, blandit at fringilla ac, varius sed dolor. Donec augue lacus, vulputate sed consectetur facilisis, interdum pharetra ligula. Nulla suscipit erat nibh, ut porttitor nisl dapibus eu.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien risus, blandit at fringilla ac, varius sed dolor. Donec augue lacus, vulputate sed consectetur facilisis, interdum pharetra ligula. Nulla suscipit erat nibh, ut porttitor nisl dapibus eu.</p>
-                        <img class="img-responsive img-center" src="/assets/projects/company-logo.png" alt="">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien risus, blandit at fringilla ac, varius sed dolor. Donec augue lacus, vulputate sed consectetur facilisis, interdum pharetra ligula. Nulla suscipit erat nibh, ut porttitor nisl dapibus eu. Nam eget urna pellentesque nisl ultrices dapibus. Mauris accumsan vehicula nisl, sed tempus mauris facilisis eu. Donec a iaculis nisi, quis malesuada justo. Pellentesque ut enim sit amet ipsum dignissim egestas. Morbi tincidunt rhoncus urna eget placerat.</p>
-                    </div>
-
-                </a><!--End Project Item -->
-
-                <a class="project-item web-design" href="#somelink" data-images="/assets/projects/project-slide.jpg, /assets/projects/project-slide.jpg, /assets/projects/project-slide.jpg">
-
-                    <img class="img-responsive project-image" src="/assets/projects/project-thumb.jpg" alt=""><!--Project thumb -->
-
-                    <div class="hover-mask">
-                        <h2 class="project-title">Project 9</h2><!--Project Title -->
-                        <p>amazon.com</p><!--Project Subtitle -->
-                    </div>
-
-                    <!--==== Project Preview HTML ====-->
-
-                    <div class="sr-only project-description">
-                        <p class="clearfix">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien risus, blandit at fringilla ac, varius sed dolor. Donec augue lacus, vulputate sed consectetur facilisis, interdum pharetra ligula. Nulla suscipit erat nibh, ut porttitor nisl dapibus eu.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien risus, blandit at fringilla ac, varius sed dolor. Donec augue lacus, vulputate sed consectetur facilisis, interdum pharetra ligula. Nulla suscipit erat nibh, ut porttitor nisl dapibus eu.</p>
-                        <img class="img-responsive img-center" src="/assets/projects/company-logo.png" alt="">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien risus, blandit at fringilla ac, varius sed dolor. Donec augue lacus, vulputate sed consectetur facilisis, interdum pharetra ligula. Nulla suscipit erat nibh, ut porttitor nisl dapibus eu.</p>
-                    </div>
-
-                </a><!--End Project Item -->
 
             </div><!-- End projects -->
 
@@ -348,40 +210,26 @@ PORTFOLIO
         PROJECT PREVIEW MODAL (Do not alter this markup)
         =============================================== -->
         <div id="project-modal" class="modal fade">
-
             <div class="modal-dialog">
-
                 <div class="modal-content">
-
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
-
                     <div class="modal-body">
-
                         <div class="left-col">
                             <img class="img-responsive" src="/assets/imac.png" alt="">
                             <div class="loader"></div>
                             <div class="image-wrapper"></div>
                         </div>
-
                         <h1></h1>
-
                         <div class="project-descr"></div>
-
                         <div class="clearfix"></div>
-
                         <p class="text-center"><a class="btn btn-theme"><i class="icon-external-link"></i>Visit Website</a></p>
-
                     </div><!-- End modal-body -->
-
                 </div><!-- End modal-content -->
-
             </div><!-- End modal-dialog -->
-
         </div><!-- End modal -->
-
-    </section><!-- End portfolio section -->*@
+    </section><!-- End portfolio section -->
 </div>
 <!-- ==============================================
 CONTACT
@@ -454,4 +302,3 @@ CONTACT
 
 </section>
 <!-- End contact section -->
-
