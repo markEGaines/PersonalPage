@@ -218,10 +218,32 @@
     <Content Include="assets\loader.gif" />
     <Content Include="assets\logo.png" />
     <Content Include="assets\Mark360.jpg" />
+    <Content Include="assets\projects\BudgetBuilderScreen1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\projects\BudgetBuilderScreen2.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\projects\BudgetBuilderThumb1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\projects\BugSmearScreen1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\projects\ChoicePicks1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\projects\ChoicePicks2.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="assets\projects\company-logo.png" />
+    <Content Include="assets\projects\company-logox.png" />
     <Content Include="assets\Mark240.jpg" />
     <Content Include="assets\projects\masterClass\bug_with_attitude.jpg" />
     <Content Include="assets\projects\masterClass\javaScript.jpg" />
+    <Content Include="assets\projects\masterClass\javascriptLogo510.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="assets\projects\project-slide.jpg" />
     <Content Include="assets\projects\project-thumb.jpg" />
     <Content Include="Content\bootstrap-theme.css" />

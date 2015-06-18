@@ -90,30 +90,30 @@ namespace MyPersonalPage.Controllers
         //    return View();
         //}
 
-        //// POST: Posts/CreateComment
-        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<ActionResult> CreateComment([Bind(Include = "PostId,AuthorId,Created,Body")] Comment comment, string slug)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        if (String.IsNullOrWhiteSpace(comment.Body))
-        //        {
-        //            ModelState.AddModelError("Body", "Missing Comment Text");
-        //            return RedirectToAction("Details", new { Slug = slug });
-        //        }
-        //            comment.Created = System.DateTimeOffset.Now;
-        //            comment.AuthorId = User.Identity.GetUserId();
+        // POST: Posts/CreateComment
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> CreateComment([Bind(Include = "PostId,AuthorId,Created,Body")] Comment comment, string slug)
+        {
+            if (ModelState.IsValid)
+            {
+                if (String.IsNullOrWhiteSpace(comment.Body))
+                {
+                    ModelState.AddModelError("Body", "Missing Comment Text");
+                    return RedirectToAction("Details", new { Slug = slug });
+                }
+                comment.Created = System.DateTimeOffset.Now;
+                comment.AuthorId = User.Identity.GetUserId();
 
-        //            db.Comments.Add(comment);
-        //            await db.SaveChangesAsync();
-        //            return RedirectToAction("Details", new { Slug = slug });
-              
-        //    }
-        //    return RedirectToAction("Details", new { Slug = slug});
-        //}
+                db.Comments.Add(comment);
+                await db.SaveChangesAsync();
+                return RedirectToAction("Details", new { Slug = slug });
+
+            }
+            return RedirectToAction("Details", new { Slug = slug });
+        }
 
 
 

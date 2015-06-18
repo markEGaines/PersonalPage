@@ -143,7 +143,8 @@
                        "Are we not drawn onward, we few? Drawn onward to new era?",
                        "Are we not drawn onward, we few? Drawn onward to a new era?",
                        "Able was I, ere I saw Elba.",
-                       "Madam, I'm Adam."];
+                       "Madam, I'm Adam.",
+                       "Is it crazy how saying sentences backwards creates backwards sentences saying how crazy it is?"];
     var q = 0;
     task4a = function () {
         if (q < palindromes.length -1) { q++ } else { q = 0 };
